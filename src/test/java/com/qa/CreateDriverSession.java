@@ -9,10 +9,6 @@ import java.net.URL;
 import java.time.Duration;
 import java.util.Properties;
 
-enum OS{
- ANDROID,IOS
-}
-
 enum DEVICE{
 
     PIXEL_6_API_33("emulator-5554"),
@@ -42,23 +38,6 @@ enum DEVICE{
         }
 
         return null;
-    }
-}
-
-enum AUTOMATION{
-
-    UIAUTOMATOR2("uiautomator2"),
-    XCUITEST("XCUITest"),
-    ESPRESSO("espresso");
-
-    private final String automationName;
-
-    private AUTOMATION(String name){
-        this.automationName = name;
-    }
-
-    public String getAutomationName() {
-        return this.automationName;
     }
 }
 
