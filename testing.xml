@@ -11,7 +11,6 @@
         <!--        <parameter name="deviceName" value="emulator-5554"/>-->
         <classes>
             <class name="com.qa.tests.LoginTests">
-
             </class>
         </classes>
     </test>

@@ -62,7 +62,7 @@ public class LoginTests {
         loginPage.pressLoginBtn();
 
         //THEN - verify error messaged displayed is correct, and user is not logged in
-        Assert.assertEquals(loginPage.getErrorText(), LoginPage.expectedError);
+        Assert.assertEquals(loginPage.getErrorText(), BaseTest.stringHashMap.get("error_invalid_username_password"));
     }
 
     @Test
@@ -77,7 +77,7 @@ public class LoginTests {
         loginPage.pressLoginBtn();
 
         //THEN - verify error messaged displayed is correct, and user is not logged in
-        Assert.assertEquals(loginPage.getErrorText(), LoginPage.expectedError);
+        Assert.assertEquals(loginPage.getErrorText(), BaseTest.stringHashMap.get("error_invalid_username_password"));
     }
 
     @Test
@@ -94,6 +94,6 @@ public class LoginTests {
 
         //THEN - verify user logs in and is displayed the Products page.
         Assert.assertNotNull(productsPage);
-        Assert.assertEquals(productsPage.getTitle(), ProductsPage.pageTitle);
+        Assert.assertEquals(productsPage.getTitle(),BaseTest.stringHashMap.get("products_page_title"));
     }
 }
