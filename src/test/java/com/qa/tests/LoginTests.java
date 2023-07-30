@@ -8,10 +8,10 @@ import org.testng.annotations.*;
 
 public class LoginTests {
 
-    private BaseTest baseTest;
 
     private LoginPage loginPage;
     private ProductsPage productsPage;
+    private BaseTest baseTest;
 
     @BeforeClass
     public void beforeClass() throws Exception {
@@ -31,7 +31,7 @@ public class LoginTests {
 
     @AfterMethod
     public void tearDown() {
-        baseTest.quitDriver();
+        BaseTest.quitDriver();
     }
 
     @Test

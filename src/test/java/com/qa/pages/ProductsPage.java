@@ -12,10 +12,7 @@ public class ProductsPage {
 
     public static final String pageTitle = "PRODUCTS";
 
-    private BaseTest baseTest;
-
     public ProductsPage() {
-        baseTest = new BaseTest();
         PageFactory.initElements(new AppiumFieldDecorator(BaseTest.appiumDriver),this);
     }
 
