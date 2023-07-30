@@ -2,12 +2,12 @@
 
 <suite name="Suite1" verbose="1" >
     <test name="Test" >
-        <parameter name="udid" value="emulator-5554"/>
+<!--        <parameter name="udid" value="emulator-5554"/>-->
         <!--        <parameter name="platformName" value="Android"/>-->
         <!--        <parameter name="platformVersion" value="Android"/>-->
         <!--        <parameter name="deviceName" value="emulator-5554"/>-->
         <classes>
-            <class name="com.qa.BaseTest">
+            <class name="com.qa.tests.LoginTests">
             </class>
         </classes>
     </test>

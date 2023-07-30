@@ -8,26 +8,20 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
 import java.io.InputStream;
 import java.time.Duration;
 import java.util.Properties;
 
 public class BaseTest {
 
-    protected static AppiumDriver appiumDriver;
+    public static AppiumDriver appiumDriver;
     protected Properties properties;
     private InputStream inputStream;
     private static final String propfilename = "/config.properties";
 
-    public BaseTest() {
-        PageFactory.initElements(new AppiumFieldDecorator(appiumDriver),this);
-    }
-
-    @Parameters({"udid"})
-    @BeforeTest
-    public void setUp(String udid) throws Exception {
+    public void initialiseDriver() throws Exception {
 
         try {
             properties = new Properties();
@@ -47,6 +41,10 @@ public class BaseTest {
         String sessionID = appiumDriver.getSessionId().toString();
 
     }
+
+//    public void setAppiumDriver(AppiumDriver driver){
+//        this.appiumDriver = driver;
+//    }
 
     public void waitForVisibility(WebElement element){
         WebDriverWait wait = new WebDriverWait(appiumDriver, Duration.ofSeconds(TestUtils.WAIT));
@@ -68,8 +66,9 @@ public class BaseTest {
         return element.getAttribute(attribute);
     }
 
-    @AfterTest
-    public void tearDown() {
-        appiumDriver.quit();
+    public void quitDriver(){
+        if(appiumDriver!=null){
+            appiumDriver.quit();
+        }
     }
 }
