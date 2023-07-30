@@ -64,11 +64,6 @@ enum AUTOMATION{
 
 public class CreateDriverSession {
 
-    private final static String port = "http://0.0.0.0:4723";
-    private final static String apiDemoAppPackage = "io.appium.android.apis";
-    private final static String sauceLabAppPackage = "com.swaglabsmobileapp";
-    private final static String sauceLabAppActivity = sauceLabAppPackage+".SplashActivity";
-
     public static String getAPKPath(String apkName) {
         String rootDir =  System.getProperty("user.dir");
         String apk_Dir = ("/src/test/resources/app/"+apkName).replace('/',File.separatorChar);
