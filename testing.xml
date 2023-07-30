@@ -11,9 +11,7 @@
         <!--        <parameter name="deviceName" value="emulator-5554"/>-->
         <classes>
             <class name="com.qa.tests.LoginTests">
-                <methods>
-                    <include name="invalid_username_valid_password_unsuccessful_login"/>
-                </methods>
+
             </class>
         </classes>
     </test>
