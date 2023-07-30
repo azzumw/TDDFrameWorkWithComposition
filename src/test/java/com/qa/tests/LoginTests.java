@@ -8,9 +8,7 @@ import org.testng.annotations.*;
 
 public class LoginTests {
 
-
     private LoginPage loginPage;
-    private ProductsPage productsPage;
 
     @BeforeClass
     public void beforeClass() throws Exception {
@@ -24,7 +22,6 @@ public class LoginTests {
     public void setUp() throws Exception {
         BaseTest.initialiseDriver();
         loginPage = new LoginPage();
-
     }
 
     @AfterMethod
@@ -68,7 +65,7 @@ public class LoginTests {
                 .enterPassword(LoginPage.password);
 
         //WHEN - login button is pressed
-        productsPage = loginPage.pressLoginBtn();
+        ProductsPage productsPage = loginPage.pressLoginBtn();
 
         //THEN - verify user logs in and is displayed the Products page.
         Assert.assertNotNull(productsPage);
