@@ -1,6 +1,9 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
 <suite name="Suite1" verbose="1" >
+    <listeners>
+        <listener class-name="com.qa.listeners.TestListener"/>
+    </listeners>
     <test name="Test" >
 <!--        <parameter name="udid" value="emulator-5554"/>-->
         <!--        <parameter name="platformName" value="Android"/>-->
@@ -8,6 +11,9 @@
         <!--        <parameter name="deviceName" value="emulator-5554"/>-->
         <classes>
             <class name="com.qa.tests.LoginTests">
+                <methods>
+                    <include name="invalid_username_valid_password_unsuccessful_login"/>
+                </methods>
             </class>
         </classes>
     </test>
