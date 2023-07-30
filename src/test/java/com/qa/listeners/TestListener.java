@@ -2,7 +2,6 @@ package com.qa.listeners;
 
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
