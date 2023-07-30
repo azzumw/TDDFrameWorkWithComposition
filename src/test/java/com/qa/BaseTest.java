@@ -1,5 +1,6 @@
 package com.qa;
 
+import com.qa.utils.TestUtils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
@@ -32,9 +33,7 @@ public class BaseTest {
             properties = new Properties();
 
             inputStream = getClass().getResourceAsStream(propfilename);
-            System.out.println(inputStream.toString());
             properties.load(inputStream);
-
 
             appiumDriver = CreateDriverSession.createDriverWithConfigProperties(
                     properties,DEVICE.PIXEL_6_API_33
@@ -50,7 +49,7 @@ public class BaseTest {
     }
 
     public void waitForVisibility(WebElement element){
-        WebDriverWait wait = new WebDriverWait(appiumDriver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(appiumDriver, Duration.ofSeconds(TestUtils.WAIT));
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
