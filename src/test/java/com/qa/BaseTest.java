@@ -8,7 +8,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.time.Duration;
 import java.util.Properties;
@@ -18,26 +21,28 @@ public class BaseTest {
     protected static AppiumDriver appiumDriver;
     protected Properties properties;
     private InputStream inputStream;
-    private static final String propfilename = "config.properties";
+    private static final String propfilename = "/config.properties";
 
     public BaseTest() {
         PageFactory.initElements(new AppiumFieldDecorator(appiumDriver),this);
     }
 
-//    @Parameters({"platformName","platformVersion","deviceName"})
+    @Parameters({"udid"})
     @BeforeTest
-    public void setUp() throws Exception {
+    public void setUp(String udid) throws Exception {
 
         try {
             properties = new Properties();
 
-//            inputStream.getClass().getClassLoader().getResourceAsStream(propfilename);
-//            properties.load(inputStream);
+            inputStream = getClass().getResourceAsStream(propfilename);
+            System.out.println(inputStream.toString());
+            properties.load(inputStream);
 
-            appiumDriver = CreateDriverSession.createDriverSession(OS.ANDROID,
-                    DEVICE.PIXEL_6_API_33,
-                    AUTOMATION.UIAUTOMATOR2,
-                    "Android.SauceLabs.Mobile.Sample.app.2.7.1.apk");
+
+            appiumDriver = CreateDriverSession.createDriverWithConfigProperties(
+                    properties,DEVICE.PIXEL_6_API_33
+            );
+
         } catch (Exception e) {
             e.printStackTrace();
             throw e;
