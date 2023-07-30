@@ -16,12 +16,12 @@ public class BaseTest {
     private static InputStream inputStream;
     private static final String propfilename = "/config.properties";
 
-    public void initialiseDriver() throws Exception {
+    public static void initialiseDriver() throws Exception {
 
         try {
             properties = new Properties();
 
-            inputStream = getClass().getResourceAsStream(propfilename);
+            inputStream = BaseTest.class.getResourceAsStream(propfilename);
             properties.load(inputStream);
 
             appiumDriver = CreateDriverSession.createDriverWithConfigProperties(

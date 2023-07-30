@@ -11,7 +11,7 @@ public class LoginTests {
 
     private LoginPage loginPage;
     private ProductsPage productsPage;
-    private BaseTest baseTest;
+//    private BaseTest baseTest;
 
     @BeforeClass
     public void beforeClass() throws Exception {
@@ -23,8 +23,8 @@ public class LoginTests {
 
     @BeforeMethod
     public void setUp() throws Exception {
-        baseTest = new BaseTest();
-        baseTest.initialiseDriver();
+//        baseTest = new BaseTest();
+        BaseTest.initialiseDriver();
         loginPage = new LoginPage();
 
     }
