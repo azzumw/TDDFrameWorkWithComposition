@@ -10,9 +10,14 @@
         <!--        <parameter name="platformVersion" value="Android"/>-->
         <!--        <parameter name="deviceName" value="emulator-5554"/>-->
         <classes>
-            <class name="com.qa.tests.LoginTests">
+<!--            <class name="com.qa.tests.LoginTests">-->
+<!--                <methods>-->
+<!--                    <include name="testName"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+            <class name="com.qa.tests.ProductsTests">
                 <methods>
-                    <include name="testName"/>
+                    <include name="test_name"/>
                 </methods>
             </class>
         </classes>

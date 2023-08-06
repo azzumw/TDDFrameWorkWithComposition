@@ -11,7 +11,9 @@ import java.io.InputStream;
 
 public class LoginTests {
 
+    //subject under test
     private LoginPage loginPage;
+
     private InputStream inputStream;
     private JSONObject jsonObjLoginUsers;
 
@@ -31,7 +33,6 @@ public class LoginTests {
                 inputStream.close();
             }
         }
-
     }
 
     @AfterClass

@@ -47,7 +47,7 @@ public class BaseTest {
 
         }
 
-        String sessionID = appiumDriver.getSessionId().toString();
+//        String sessionID = appiumDriver.getSessionId().toString();
 
     }
 

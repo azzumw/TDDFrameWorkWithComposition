@@ -3,4 +3,8 @@
 <!-- for expected results/text   -->
     <string name="error_invalid_username_password">Username and password do not match any user in this service.</string>
     <string name="products_page_title">PRODUCTS</string>
+
+<!--    Product Detail Page-->
+    <string name="prod_detail_page_product_name">Sauce Labs Backpack</string>
+    <string name="prod_detail_page_product_desc">carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.</string>
 </resources>
