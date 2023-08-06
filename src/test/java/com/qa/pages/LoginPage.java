@@ -9,25 +9,23 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
 
-    private static LoginPage loginPage;
+    private static LoginPage INSTANCE;
 
     @AndroidFindBy (accessibility = "test-Username") private WebElement usernameTextField;
     @AndroidFindBy(accessibility = "test-Password") private WebElement passwordTextField;
     @AndroidFindBy(accessibility = "test-LOGIN") private WebElement loginBtn;
     @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-Error message\"]/android.widget.TextView") private WebElement errorText;
 
-    public LoginPage() {
+    private LoginPage() {
         PageFactory.initElements(new AppiumFieldDecorator(BaseTest.appiumDriver),this);
     }
 
     public static LoginPage getInstance(){
 
-        if( loginPage != null){
-            return loginPage;
+        if( INSTANCE == null){
+            INSTANCE = new LoginPage();
         }
-
-        loginPage = new LoginPage();
-        return loginPage;
+        return INSTANCE;
     }
 
     public LoginPage enterUsername(String username){

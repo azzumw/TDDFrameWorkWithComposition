@@ -14,20 +14,25 @@ public class TestListener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         if (result.getThrowable() != null) {
+            System.out.println("entering If...");
             StringWriter sw = new StringWriter();
             PrintWriter printWriter = new PrintWriter(sw);
             result.getThrowable().printStackTrace(printWriter);
             System.out.println(sw);
         }
+        System.out.println("test failed");
 
-        File file = BaseTest.appiumDriver.getScreenshotAs(OutputType.FILE);
-
-        try {
-            FileUtils.copyFile(file,new File("SampleSrc.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-//        ITestListener.super.onTestFailure(result);
+//        if (BaseTest.appiumDriver != null) {
+//            System.out.println("not null appium dirver");
+//            File file = BaseTest.appiumDriver.getScreenshotAs(OutputType.FILE);
+//
+//            try {
+//                FileUtils.copyFile(file, new File("Samplerc.png"));
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        } else {
+//            System.out.println("NULL appium dirver");
+//        }
     }
 }

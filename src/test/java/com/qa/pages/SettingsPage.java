@@ -31,6 +31,6 @@ public class SettingsPage {
 
    public LoginPage pressLogoutBtn(){
        BaseTest.click(logoutBtn);
-       return new LoginPage();
+       return LoginPage.getInstance();
    }
 }

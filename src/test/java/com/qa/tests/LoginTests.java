@@ -42,7 +42,7 @@ public class LoginTests {
     @BeforeMethod
     public void setUp() throws Exception {
         BaseTest.initialiseDriver();
-        loginPage = new LoginPage();
+        loginPage = LoginPage.getInstance();
     }
 
     @AfterMethod
