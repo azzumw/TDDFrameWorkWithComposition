@@ -6,14 +6,13 @@ import com.qa.pages.LoginPage;
 import com.qa.pages.ProductDetailPage;
 import com.qa.pages.ProductsPage;
 import com.qa.pages.SettingsPage;
-import org.apache.commons.logging.Log;
 import org.json.JSONObject;
 import org.json.JSONTokener;
-import org.testng.Assert;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
 import java.io.InputStream;
+import java.lang.reflect.Method;
 
 @Listeners
 public class ProductsTests {
@@ -31,11 +30,9 @@ public class ProductsTests {
     @BeforeClass
     public void beforeClass() throws Exception {
         try {
-            String datafilename = "/data/loginUsers.json";
-            inputStream = getClass().getResourceAsStream(datafilename);
+            inputStream = getClass().getResourceAsStream("/data/loginUsers.json");
             JSONTokener jsonTokener = new JSONTokener(inputStream);
             jsonObjLoginUsers = new JSONObject(jsonTokener).getJSONObject("validUser");
-            ;
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -48,8 +45,8 @@ public class ProductsTests {
     }
 
     @BeforeMethod
-    public void setUp() {
-        System.out.println("Beforemethod");
+    public void setUp(Method method) {
+        System.out.println("Before method");
         try {
             BaseTest.initialiseDriver();
         } catch (Exception e) {
@@ -57,20 +54,19 @@ public class ProductsTests {
         }
         loginPage = LoginPage.getInstance();
 
-        softAssert = new CustomSoftAssert();
+        softAssert = new CustomSoftAssert(getClass().getSimpleName(), method.getName());
     }
 
     @AfterMethod
     public void tearDown() {
-
         System.out.println("closing driver");
         BaseTest.quitDriver();
     }
 
-    @Test
+    @Ignore
     public void testName() {
         System.out.println("testName");
-        softAssert.assertEquals(2,3);
+        softAssert.assertEquals(2, 3);
         System.out.println("testName continue after assert failure");
         softAssert.assertAll();
     }
@@ -82,16 +78,14 @@ public class ProductsTests {
         productsPage = login();
 
         softAssert.assertEquals(productsPage.getProductName(), BaseTest.stringHashMap.get("prod_detail_page_product_name"));
-        softAssert.assertEquals(2,3);
         //WHEN: first product is clicked
         productDetailPage = productsPage.pressProduct1();
 
         //THEN: verify the product detail page shows the product clicked
         softAssert.assertEquals(productDetailPage.getProductName(), BaseTest.stringHashMap.get("prod_detail_page_product_name"));
-        softAssert.assertEquals(2,3);
-
         softAssert.assertEquals(productDetailPage.getProductDescription(), BaseTest.stringHashMap.get("prod_detail_page_product_desc"));
 
+        //navigate back to the products page, and logout
         productsPage = productDetailPage.navigateToProductsPage();
 
         settingsPage = productsPage.pressDrawerMenu();
@@ -104,7 +98,6 @@ public class ProductsTests {
     }
 
     private ProductsPage login() {
-
         return loginPage.login(
                 jsonObjLoginUsers.getString("username"),
                 jsonObjLoginUsers.getString("password"));

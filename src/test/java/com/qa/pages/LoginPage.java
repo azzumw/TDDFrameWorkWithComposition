@@ -7,14 +7,21 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+public final class LoginPage {
 
     private static LoginPage INSTANCE;
 
-    @AndroidFindBy (accessibility = "test-Username") private WebElement usernameTextField;
-    @AndroidFindBy(accessibility = "test-Password") private WebElement passwordTextField;
-    @AndroidFindBy(accessibility = "test-LOGIN") private WebElement loginBtn;
-    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-Error message\"]/android.widget.TextView") private WebElement errorText;
+    @AndroidFindBy (accessibility = "test-Username")
+    private WebElement usernameTextField;
+
+    @AndroidFindBy(accessibility = "test-Password")
+    private WebElement passwordTextField;
+
+    @AndroidFindBy(accessibility = "test-LOGIN")
+    private WebElement loginBtn;
+
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-Error message\"]/android.widget.TextView")
+    private WebElement errorText;
 
     private LoginPage() {
         PageFactory.initElements(new AppiumFieldDecorator(BaseTest.appiumDriver),this);

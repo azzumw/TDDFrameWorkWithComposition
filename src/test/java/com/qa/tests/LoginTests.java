@@ -26,10 +26,10 @@ public class LoginTests {
             jsonObjLoginUsers = new JSONObject(jsonTokener);
 
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
-            if(inputStream!= null){
+        } finally {
+            if (inputStream != null) {
                 inputStream.close();
             }
         }
@@ -95,6 +95,6 @@ public class LoginTests {
 
         //THEN - verify user logs in and is displayed the Products page.
         Assert.assertNotNull(productsPage);
-        Assert.assertEquals(productsPage.getTitle(),BaseTest.stringHashMap.get("products_page_title"));
+        Assert.assertEquals(productsPage.getTitle(), BaseTest.stringHashMap.get("products_page_title"));
     }
 }
