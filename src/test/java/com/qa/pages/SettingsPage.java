@@ -28,18 +28,9 @@ public class SettingsPage {
 
        }
    }
-   public  LoginPage pressMenuItemAtIndex(){
-       BaseTest.click(menuList.get(7));
-       return LoginPage.getInstance();
-
-//        switch (accessiblityId){
-//            case "test-ALL ITEMS": return ;
-//            case "test-LOGOUT": return new LoginPage();
-//        }
-   }
 
    public LoginPage pressLogoutBtn(){
        BaseTest.click(logoutBtn);
-       return LoginPage.getInstance();
+       return new LoginPage();
    }
 }

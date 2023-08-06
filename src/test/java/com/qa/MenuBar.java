@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class MenuBar {
     static class MenuItem{
-
+        public static void method(){}
     }
 
     @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-Menu\"]/android.view.ViewGroup/android.widget.ImageView")

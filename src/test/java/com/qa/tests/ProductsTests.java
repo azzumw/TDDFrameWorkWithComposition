@@ -53,7 +53,8 @@ public class ProductsTests {
         } catch (Exception e) {
            e.printStackTrace();
         }
-        loginPage = LoginPage.getInstance();
+        loginPage = new LoginPage();
+
         softAssert = new SoftAssert();
     }
 
@@ -89,6 +90,7 @@ public class ProductsTests {
     }
 
     private ProductsPage login(){
+
          return loginPage.login(
                 jsonObjLoginUsers.getString("username"),
                 jsonObjLoginUsers.getString("password"));

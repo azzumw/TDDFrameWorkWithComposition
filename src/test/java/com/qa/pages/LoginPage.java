@@ -2,7 +2,6 @@ package com.qa.pages;
 
 import com.qa.BaseTest;
 import com.qa.MenuBar;
-import com.qa.tests.ProductsTests;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
@@ -17,12 +16,12 @@ public class LoginPage {
     @AndroidFindBy(accessibility = "test-LOGIN") private WebElement loginBtn;
     @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-Error message\"]/android.widget.TextView") private WebElement errorText;
 
-//    public LoginPage() {
-//
-//    }
+    public LoginPage() {
+        PageFactory.initElements(new AppiumFieldDecorator(BaseTest.appiumDriver),this);
+    }
 
     public static LoginPage getInstance(){
-        PageFactory.initElements(new AppiumFieldDecorator(BaseTest.appiumDriver),LoginPage.class);
+
         if( loginPage != null){
             return loginPage;
         }

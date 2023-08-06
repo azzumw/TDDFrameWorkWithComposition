@@ -1,23 +1,23 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-<suite name="Suite1" verbose="1" >
+<suite name="Suite1" verbose="1">
     <listeners>
         <listener class-name="com.qa.listeners.TestListener"/>
     </listeners>
-    <test name="Test" >
+    <test name="Test">
 <!--        <parameter name="udid" value="emulator-5554"/>-->
-        <!--        <parameter name="platformName" value="Android"/>-->
-        <!--        <parameter name="platformVersion" value="Android"/>-->
-        <!--        <parameter name="deviceName" value="emulator-5554"/>-->
+<!--        <parameter name="platformName" value="Android"/>-->
+<!--        <parameter name="platformVersion" value="Android"/>-->
+<!--        <parameter name="deviceName" value="emulator-5554"/>-->
         <classes>
-<!--            <class name="com.qa.tests.LoginTests">-->
-<!--                <methods>-->
-<!--                    <include name="testName"/>-->
-<!--                </methods>-->
-<!--            </class>-->
+            <!--            <class name="com.qa.tests.LoginTests">-->
+            <!--                <methods>-->
+            <!--                    <include name="testName"/>-->
+            <!--                </methods>-->
+            <!--            </class>-->
             <class name="com.qa.tests.ProductsTests">
                 <methods>
-                    <include name="test_name"/>
+                    <include name="clicking_product_navigates_to_correct_product_detail"/>
                 </methods>
             </class>
         </classes>
