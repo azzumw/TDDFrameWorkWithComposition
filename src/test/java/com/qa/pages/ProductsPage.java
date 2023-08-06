@@ -18,8 +18,6 @@ public class ProductsPage {
     @AndroidFindBy(xpath = "(//android.widget.TextView[@content-desc=\"test-Item title\"])[1]")
     private WebElement product1Name;
 
-    public static final String pageTitle = "PRODUCTS";
-
     private MenuBar menuBar;
 
     public ProductsPage(MenuBar menuBar) {
@@ -41,7 +39,7 @@ public class ProductsPage {
     }
 
     public ProductDetailPage pressProductWithTitle(String productTitle){
-        WebElement element = (WebElement) AppiumBy.ByAndroidUIAutomator.name("Sauce Labs Backpack");
+        WebElement element = (WebElement) AppiumBy.ByAndroidUIAutomator.name(productTitle);
         return new ProductDetailPage();
     }
 
