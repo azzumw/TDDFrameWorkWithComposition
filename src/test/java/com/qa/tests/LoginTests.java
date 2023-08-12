@@ -1,17 +1,19 @@
 package com.qa.tests;
 
 import com.qa.BaseTest;
+import com.qa.CustomSoftAssert;
 import com.qa.pages.LoginPage;
 import com.qa.pages.ProductsPage;
 import com.qa.utils.TestUtils;
 import io.appium.java_client.screenrecording.CanRecordScreen;
 import org.json.JSONObject;
 import org.json.JSONTokener;
-import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+import org.testng.asserts.SoftAssert;
 
 import java.io.*;
+import java.lang.reflect.Method;
 
 
 public class LoginTests {
@@ -21,6 +23,8 @@ public class LoginTests {
 
     private InputStream inputStream;
     private JSONObject jsonObjLoginUsers;
+
+    private SoftAssert softAssert;
 
     @BeforeClass
     public void beforeClass() throws Exception {
@@ -46,9 +50,12 @@ public class LoginTests {
 
     @Parameters({"platformName","platformVersion","deviceName"})
     @BeforeMethod
-    public void setUp(String platformName,String platformVersion,String deviceName) throws Exception {
+    public void setUp(@Optional String platformName, @Optional String platformVersion, @Optional String deviceName, Method method) throws Exception {
         BaseTest.initialiseDriver(platformName);
-        loginPage = LoginPage.getInstance();
+
+        loginPage = new LoginPage();
+
+        softAssert = new CustomSoftAssert(getClass().getSimpleName(), method.getName());
 
         ((CanRecordScreen)BaseTest.appiumDriver).startRecordingScreen();
     }
@@ -57,8 +64,9 @@ public class LoginTests {
     public void tearDown(ITestResult result) {
 
         TestUtils.captureVideo(result,((CanRecordScreen)BaseTest.appiumDriver).stopRecordingScreen());
-
+        System.out.println("Tearing down method after recoding...");
         BaseTest.quitDriver();
+        System.out.println("Tear Down completed");
     }
 
     @Test
@@ -74,7 +82,8 @@ public class LoginTests {
         loginPage.pressLoginBtn();
 
         //THEN - verify error messaged displayed is correct, and user is not logged in
-        Assert.assertEquals(loginPage.getErrorText(), BaseTest.stringHashMap.get("error_invalid_username_password"));
+        softAssert.assertEquals(loginPage.getErrorText(), BaseTest.stringHashMap.get("error_invalid_username_password"));
+        softAssert.assertAll();
     }
 
     @Test
@@ -89,7 +98,8 @@ public class LoginTests {
         loginPage.pressLoginBtn();
 
         //THEN - verify error messaged displayed is correct, and user is not logged in
-        Assert.assertEquals(loginPage.getErrorText(), BaseTest.stringHashMap.get("error_invalid_username_password"));
+        softAssert.assertEquals(loginPage.getErrorText(), BaseTest.stringHashMap.get("error_invalid_username_password"));
+        softAssert.assertAll();
     }
 
     @Test
@@ -105,6 +115,7 @@ public class LoginTests {
         ProductsPage productsPage = loginPage.pressLoginBtn();
 
         //THEN - verify user logs in and is displayed the Products page.
-        Assert.assertEquals(productsPage.getTitle(), BaseTest.stringHashMap.get("products_page_title"));
+       softAssert.assertEquals(productsPage.getTitle(), BaseTest.stringHashMap.get("products_page_title"));
+        softAssert.assertAll();
     }
 }

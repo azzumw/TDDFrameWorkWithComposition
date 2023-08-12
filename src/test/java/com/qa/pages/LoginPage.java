@@ -23,17 +23,17 @@ public final class LoginPage {
     @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-Error message\"]/android.widget.TextView")
     private WebElement errorText;
 
-    private LoginPage() {
+    public LoginPage() {
         PageFactory.initElements(new AppiumFieldDecorator(BaseTest.appiumDriver),this);
     }
 
-    public static LoginPage getInstance(){
-
-        if( INSTANCE == null){
-            INSTANCE = new LoginPage();
-        }
-        return INSTANCE;
-    }
+//    public static LoginPage getInstance(){
+//
+//        if( INSTANCE == null){
+//            INSTANCE = new LoginPage();
+//        }
+//        return INSTANCE;
+//    }
 
     public LoginPage enterUsername(String username){
         BaseTest.sendKeys(usernameTextField,username);

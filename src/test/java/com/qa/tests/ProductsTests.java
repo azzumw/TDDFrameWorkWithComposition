@@ -6,8 +6,11 @@ import com.qa.pages.LoginPage;
 import com.qa.pages.ProductDetailPage;
 import com.qa.pages.ProductsPage;
 import com.qa.pages.SettingsPage;
+import com.qa.utils.TestUtils;
+import io.appium.java_client.screenrecording.CanRecordScreen;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
@@ -46,21 +49,25 @@ public class ProductsTests {
 
     @Parameters({"platformName","platformVersion","deviceName"})
     @BeforeMethod
-    public void setUp(String platformName, Method method) {
+    public void setUp(@Optional String platformName,@Optional String platformVersion, @Optional String deviceName, Method method) {
         System.out.println("Before method");
         try {
             BaseTest.initialiseDriver(platformName);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        loginPage = LoginPage.getInstance();
+        loginPage = new LoginPage();
 
         softAssert = new CustomSoftAssert(getClass().getSimpleName(), method.getName());
+
+        ((CanRecordScreen)BaseTest.appiumDriver).startRecordingScreen();
     }
 
     @AfterMethod
-    public void tearDown() {
-        System.out.println("closing driver");
+    public void tearDown(ITestResult result) {
+
+        TestUtils.captureVideo(result,((CanRecordScreen)BaseTest.appiumDriver).stopRecordingScreen());
+
         BaseTest.quitDriver();
     }
 

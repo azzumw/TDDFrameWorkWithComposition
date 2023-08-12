@@ -20,6 +20,7 @@ public class TestListener implements ITestListener {
         }
 
         System.out.println("test failed");
+        ITestListener.super.onTestFailure(result);
 
 //        Map<String ,String > params = new HashMap<>();
 //        params = result.getTestContext().getCurrentXmlTest().getAllParameters();

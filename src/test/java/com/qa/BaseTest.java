@@ -25,6 +25,7 @@ public class BaseTest {
 
     public static void initialiseDriver(String platformName) throws Exception {
         try {
+            System.out.println("Intiializing Driver...");
             properties = new Properties();
 
             inputStream = BaseTest.class.getResourceAsStream(propfilename);
@@ -47,7 +48,7 @@ public class BaseTest {
 
         }
 
-//        String sessionID = appiumDriver.getSessionId().toString();
+        String sessionID = appiumDriver.getSessionId().toString();
 
     }
 
@@ -73,6 +74,7 @@ public class BaseTest {
 
     public static void quitDriver() {
         if (appiumDriver != null) {
+            System.out.println("Quiting Driver...");
             appiumDriver.quit();
         }
     }

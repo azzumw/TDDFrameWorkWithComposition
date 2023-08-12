@@ -4,17 +4,18 @@
     <listeners>
         <listener class-name="com.qa.listeners.TestListener"/>
     </listeners>
+    <parameter name="platformName" value="Android"/>
+    <parameter name="platformVersion" value="33"/>
+    <parameter name="deviceName" value="emulator-5554"/>
     <test name="Test">
-<!--        <parameter name="udid" value="emulator-5554"/>-->
-        <parameter name="platformName" value="Android"/>
-        <parameter name="platformVersion" value="33"/>
-        <parameter name="deviceName" value="emulator-5554"/>
+        <!--        <parameter name="udid" value="emulator-5554"/>-->
+
         <classes>
-                        <class name="com.qa.tests.LoginTests">
-                            <methods>
-                                <include name="valid_username_valid_password_successful_login"/>
-                            </methods>
-                        </class>
+            <class name="com.qa.tests.LoginTests">
+                <methods>
+
+                </methods>
+            </class>
 <!--            <class name="com.qa.tests.ProductsTests">-->
 <!--                <methods>-->
 <!--                    <include name="clicking_product_navigates_to_correct_product_detail"/>-->
