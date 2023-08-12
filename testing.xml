@@ -16,12 +16,12 @@
 
                 </methods>
             </class>
-<!--            <class name="com.qa.tests.ProductsTests">-->
-<!--                <methods>-->
-<!--                    <include name="clicking_product_navigates_to_correct_product_detail"/>-->
-<!--                    <include name="testName"/>-->
-<!--                </methods>-->
-<!--            </class>-->
+            <class name="com.qa.tests.ProductsTests">
+                <methods>
+                    <include name="clicking_product_navigates_to_correct_product_detail"/>
+                    <include name="testName"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>
