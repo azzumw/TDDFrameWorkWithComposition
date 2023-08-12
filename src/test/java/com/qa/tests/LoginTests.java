@@ -3,11 +3,16 @@ package com.qa.tests;
 import com.qa.BaseTest;
 import com.qa.pages.LoginPage;
 import com.qa.pages.ProductsPage;
+import com.qa.utils.TestUtils;
+import io.appium.java_client.screenrecording.CanRecordScreen;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
-import java.io.InputStream;
+
+import java.io.*;
+
 
 public class LoginTests {
 
@@ -39,14 +44,20 @@ public class LoginTests {
     public void afterClass() {
     }
 
+    @Parameters({"platformName","platformVersion","deviceName"})
     @BeforeMethod
-    public void setUp() throws Exception {
-        BaseTest.initialiseDriver();
+    public void setUp(String platformName,String platformVersion,String deviceName) throws Exception {
+        BaseTest.initialiseDriver(platformName);
         loginPage = LoginPage.getInstance();
+
+        ((CanRecordScreen)BaseTest.appiumDriver).startRecordingScreen();
     }
 
     @AfterMethod
-    public void tearDown() {
+    public void tearDown(ITestResult result) {
+
+        TestUtils.captureVideo(result,((CanRecordScreen)BaseTest.appiumDriver).stopRecordingScreen());
+
         BaseTest.quitDriver();
     }
 
@@ -94,7 +105,6 @@ public class LoginTests {
         ProductsPage productsPage = loginPage.pressLoginBtn();
 
         //THEN - verify user logs in and is displayed the Products page.
-        Assert.assertNotNull(productsPage);
         Assert.assertEquals(productsPage.getTitle(), BaseTest.stringHashMap.get("products_page_title"));
     }
 }

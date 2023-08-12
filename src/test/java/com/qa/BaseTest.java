@@ -23,7 +23,7 @@ public class BaseTest {
     private static final String propfilename = "/config.properties";
     private static final String stringsFile = "/strings/strings.xml";
 
-    public static void initialiseDriver() throws Exception {
+    public static void initialiseDriver(String platformName) throws Exception {
         try {
             properties = new Properties();
 
@@ -35,7 +35,7 @@ public class BaseTest {
             stringHashMap = TestUtils.parseStringXML(inputStreamStrings);
 
             appiumDriver = CreateDriverSession.createDriverWithConfigProperties(
-                    properties, DEVICE.PIXEL_6_API_33
+                    properties, DEVICE.PIXEL_6_API_33,platformName
             );
 
         } catch (Exception e) {

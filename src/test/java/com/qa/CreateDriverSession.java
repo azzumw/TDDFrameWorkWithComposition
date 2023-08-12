@@ -49,10 +49,10 @@ public class CreateDriverSession {
         return rootDir + apk_Dir;
     }
 
-    public static AndroidDriver createDriverWithConfigProperties(Properties properties, DEVICE device) throws MalformedURLException {
+    public static AndroidDriver createDriverWithConfigProperties(Properties properties, DEVICE device,String platformName) throws MalformedURLException {
 
         UiAutomator2Options uiAutomator2Options = new UiAutomator2Options()
-                .setPlatformName("Android")
+                .setPlatformName(platformName)
                 .setDeviceName(device.getName())
                 .setAutomationName(properties.getProperty("androidAutomationName"))
                 .setUdid(device.getUDID())

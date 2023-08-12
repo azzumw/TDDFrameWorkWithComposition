@@ -44,11 +44,12 @@ public class ProductsTests {
 
     }
 
+    @Parameters({"platformName","platformVersion","deviceName"})
     @BeforeMethod
-    public void setUp(Method method) {
+    public void setUp(String platformName, Method method) {
         System.out.println("Before method");
         try {
-            BaseTest.initialiseDriver();
+            BaseTest.initialiseDriver(platformName);
         } catch (Exception e) {
             e.printStackTrace();
         }
